@@ -3,9 +3,9 @@ import matplotlib.cm as cm
 import numpy as np
 
 
-def calculator(upsilon, k):
-    """upsilon = rate * t"""
-    return upsilon ** k / np.math.factorial(k) * np.exp(-upsilon)
+def calculator(mu, k):
+    """mu: rate * t"""
+    return mu ** k / np.math.factorial(k) * np.exp(-mu)
 
 
 x = np.linspace(1, 30, 30)

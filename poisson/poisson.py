@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """泊松仿真
    author: github@luochang212
    usage: python poisson.py [RATE] {TIME}
@@ -12,7 +13,6 @@ import matplotlib.pyplot as plt
 
 class Poisson:
     def __init__(self, rate=sys.argv[1]):
-        """init"""
         self.rate = int(rate)
 
         self.time = 1  # 单位时间
@@ -30,10 +30,9 @@ class Poisson:
             else:
                 yield 0
 
-    def conduct_one_experiment(self, rate, time):
+    def perform_exp(self, rate, time):
         """进行一次实验
-           每次实验中，时间分片的数量比rate高两个数量级
-           return: 本次实验中，事件发生的次数
+        每次实验中，时间分片的数量比rate高两个数量级
         """
         level = len(str(rate))
         shard_num = 10 ** (level + self.NUM_LEVEL)  # 计算时间分片的数量
@@ -43,15 +42,14 @@ class Poisson:
         cnt = 0
         for _ in range(time * shard_num):
             cnt += next(gen)
+        
         return cnt
 
-    def get_distribution(self, exp_num, rate, time):
-        """多次实验，得到分布
-           exp_num: 实验次数
-        """
+    def perform_exps(self, exp_num, rate, time):
+        """多次实验，得到分布"""
         lst = []
         for _ in range(exp_num):
-            lst.append(self.conduct_one_experiment(rate, time))
+            lst.append(self.perform_exp(rate, time))
 
         return sorted(collections.Counter(lst).items(), key=lambda e: e[0])
 
@@ -68,8 +66,7 @@ class Poisson:
         plt.show()
 
     def main(self):
-        """main"""
-        sorted_list = self.get_distribution(self.EXP_NUM, self.rate, self.time)
+        sorted_list = self.perform_exps(self.EXP_NUM, self.rate, self.time)
         self.draw(sorted_list)
 
     @staticmethod

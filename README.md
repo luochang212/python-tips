@@ -1,6 +1,6 @@
 # python-tips
 
-本文是博客[《我的Python不可能这么麻烦》](https://luochang212.github.io/posts/python_tips/)的代码示例。这篇博客前后更新了5个月，陪伴我从实习到正式工作，写到现在也告一段落了。本文主要介绍 Python 的异常处理、装饰器、画图库等基础知识，也包含少量的工程实践。
+本文是博客[《我的Python不可能这么可爱》](https://luochang212.github.io/posts/python_tips/)的代码示例。这篇博客前后更新了5个月，陪伴我从实习到正式工作，写到现在也告一段落了。本文主要介绍 Python 的异常处理、装饰器、画图库等基础知识，也包含少量的工程实践。
 
 ## 语言基础
 

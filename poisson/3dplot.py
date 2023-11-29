@@ -8,13 +8,14 @@ def calculator(mu, k):
     return mu ** k / np.math.factorial(k) * np.exp(-mu)
 
 
-x = np.linspace(1, 30, 30)
+x = np.linspace(1, 30, 30).astype(int)
 z = np.array([[calculator(i, j) for i in x] for j in x])
 x, y = np.meshgrid(x, x)
 
 
 fig = plt.figure()
-ax = fig.gca(projection = '3d')
+# ax = fig.gca(projection = '3d')
+ax = fig.add_subplot(projection = '3d')
 ax.set_xlabel('mu')
 ax.set_ylabel('k')
 ax.set_zlabel('P')
